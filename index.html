@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+  <script src="lrc_Madonna.js"></script>
+  <style>
+    * {
+     margin: 0;
+     padding: 0;
+    }
+
+    ul, li {
+      list-style: none;
+    }
+
+    #box{
+      /*设置基本样式*/
+      width: 500px;
+      height: 700px;
+      border: 10px solid rgb(0, 0, 0);
+      margin: 10px auto 0;
+      background-color: #624779;
+
+      /*父元素一般设置相对定位，而子元素设置成绝对定位*/
+      /*绝对定位时，使用 top，bottom，left，right 进行控制（固定定位也行）*/
+      position: relative;
+      /*超出 div 的部分将被隐藏*/
+      overflow: hidden;
+    }
+
+    ul {
+      position: absolute;
+      top: 150px;
+      width: 100%;
+
+      transition: top .3s linear;
+    }
+
+    /* > 是 CSS 的子选择器*/
+    ul > li {
+      width: 100%;
+      height: 20px;
+      line-height: 20px;
+      text-align: center;
+      font-size: 20px;
+    }
+
+    /*li.active 表示 li 有一个 active 的类选择器*/
+    ul > li.active {
+      color: skyblue;
+    }
+
+    audio {
+      width: 300px;
+      display: block;
+      margin: 0 auto;
+    }
+  </style>
+</head>
+<body>
+
+  <div id="box">
+    <ul>
+      <li class="active">1</li>
+    </ul>
+  </div>
+
+  <audio src="Madonna.mp3" controls></audio>
+
+
+  <!--
+  audio 标签
+  + 作用：引入一个音频文件
+  + 属性：
+    + src
+    + controls ：显示播放器
+    + autoplay ：自动播放（有些浏览器不支持）
+  -->
+  <script>
+
+    /**
+     * 1. 拆开歌词
+     *    准备两个空数组: 时间数组  歌词数组
+     *    准备正则表达式
+     *    循环截取
+     *
+     * 2. 渲染页面
+     *    遍历数组,生成 li 放到 ul 中
+     *
+     * 3. 随着音乐的播放拿到对应的时间
+     *    时间格式化成 00:00 的时间格式
+     *
+     * 4. 找到时间数组里对应的时间索引
+     *    时间数组与歌词数组一一对应
+     *
+     */
+    // 1-1 准备数组
+    const timeArr = [];
+    const lrcArr = [];
+
+    // 1-2 准备正则
+    /**
+     * 解析:截取后将获得 [XX:XX.XX]AAAAA (X表示数字,A表示汉字)   AAAAA 两种字串
+     *      g 是全局标识符,使截取后的下标指向下次的位置
+     * @type {RegExp}
+     */
+    const reg = /\[(\d{2}:\d{2})\.\d{2}\](.+)/g;
+    // 1-3 截取
+    let tmp = reg.exec(lrcStr);
+    while (tmp) {
+      timeArr.push(tmp[1]);
+      lrcArr.push(tmp[2]);
+      tmp = reg.exec(lrcStr)
+    }
+
+    // 2-1 获取 ul 标签
+    const ul = document.querySelector('ul');
+    // 2-2 循环遍历歌词数组
+    let str = '';
+    lrcArr.forEach((item, index) => {
+      str += `<li class="${index === 0 ? 'active' : ''}">${item}</li>`
+    });
+    ul.innerHTML = str;
+
+    // 3-1 获取 audio 标签
+    const audio = document.querySelector('audio');
+    // 3-2 绑定事件
+    audio.addEventListener('timeupdate', function () {
+      // 3-3 格式化拿到的时间
+      const {currentTime} = this;
+      const minutes = parseInt(currentTime / 60);
+      const seconds = parseInt(currentTime % 60);
+      const timeStr = (minutes < 10 ? '0' + minutes : minutes) + ":" + (seconds < 10 ? '0' + seconds : seconds);
+
+      // 4-1 在时间数组中找到对应的索引
+      const index = timeArr.findIndex(item => item === timeStr);
+      // 4-2 给 ul 赋值
+      if (index !== -1) {
+        ul.style.top = -index * 20 + 150 + 'px';
+        ;[...ul.children].forEach(item => item.className = '');
+        ul.children[index].className = 'active';
+      }
+    });
+  </script>
+
+</body>
+</html>

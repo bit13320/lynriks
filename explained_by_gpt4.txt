@@ -1,0 +1,39 @@
+This code is a simple HTML document that includes an audio player and displays synchronized lyrics as the audio plays. It consists of three main parts: HTML structure, CSS styles, and JavaScript for functionality.
+
+HTML Structure
+<!DOCTYPE html>: Defines the document type and version of HTML.
+<html lang="en">: The root element of the document, with an en (English) language attribute.
+<head>: Contains metadata, title, external script, and style information.
+<meta charset="UTF-8">: Sets the character encoding for the document.
+<title>Title</title>: Sets the title of the document.
+<script src="lrc.js"></script>: Includes an external JavaScript file named lrc.js.
+<body>: Contains the main content of the document.
+<div id="box">: A container with an ID of box that will hold the lyrics.
+<ul>: An unordered list that will contain the individual lines of lyrics.
+<li class="active">1</li>: A list item representing the first line of lyrics, with an active class to highlight it.
+<audio src="это_ли_счастье.mp3" controls>: An audio element that loads the specified MP3 file and displays a player with controls.
+CSS Styles
+CSS resets: The styles remove default margins and padding for all elements and set list-style to none for ul and li elements.
+#box: Styles for the lyrics container, including dimensions, border, background color, positioning, and hiding overflow content.
+ul: Styles for the unordered list, including absolute positioning, width, and a CSS transition for the top property.
+ul > li: Styles for list items, including dimensions, text alignment, and font size.
+ul > li.active: Styles for the active list item, setting the text color to sky blue.
+audio: Styles for the audio element, including dimensions and centering.
+JavaScript
+Parsing lyrics:
+
+Two arrays are created: timeArr for timestamps and lrcArr for the corresponding lyrics.
+The regular expression reg is used to match and extract timestamp and lyric pairs from the lrcStr string.
+The loop iterates over the matches and populates the arrays with the extracted timestamps and lyrics.
+Rendering lyrics:
+
+The ul element is selected using querySelector.
+A loop iterates over the lrcArr and creates a string of li elements with the lyrics.
+The innerHTML of the ul is set to the generated string of li elements.
+Synchronizing lyrics with audio playback:
+
+The audio element is selected using querySelector.
+An event listener for the timeupdate event is added to the audio element.
+Inside the event listener, the current time of the audio playback is formatted into a string timeStr.
+The index of the current timestamp in timeArr is found.
+If the index is found, the top position of the ul element is updated to scroll the lyrics, and the corresponding list item is given the active class to highlight it.
