@@ -1,6 +1,6 @@
 const lrcStr = `
-[00:00.01] 作词 : Andrew Lloyd Webber/Tim Rice
-[00:01.01] 作曲 : Andrew Lloyd Webber/Tim Rice
+[00:00.01] Don't Cry for Me Argentina - Madonna
+[00:01.01] 作曲/词 : Andrew Lloyd Webber/Tim Rice
 [00:53.01]It won't be easy, you'll think it strange
 [00:53.01]那并非易事 你会为此而困惑
 [01:00.01]When I try to explain how I feel
@@ -11,21 +11,21 @@ const lrcStr = `
 [01:13.01]但你还是不相信我
 [01:18.01]All you will see is a girl you once knew
 [01:18.01]你认定了我还是从前的那个小女孩
-[01:24.01]Although she's dressed up to the nines
+[01:24.01]Although she's dressed up to the ____nines
 [01:24.01]就算她打扮得体
 [01:29.01]At sixes and sevens with you
 [01:29.01]也还是与你格格不入
 [01:38.01]I had to let it happen, I had to change
 [01:38.01]我只能任它如此  我得改变
-[01:47.01]Couldn't stay all my life down at heel
+[01:47.01]Couldn't stay all my life down at ____heel
 [01:47.01]我不愿把一生都葬在地狱里
 [01:53.01]Looking out of the window, staying out of the sun
 [01:53.01]终日张望 不见天日
-[02:00.01]So I chose freedom
+[02:00.01]So I chose _____freedom
 [02:00.01]所以我奔向自由
 [02:06.01]Running around trying everything new
 [02:06.01]四处环游，尝试一切新鲜事物
-[02:10.01]But nothing impressed me at all
+[02:10.01]But nothing _____impressed me at all
 [02:10.01]但那些不过都是凡桃俗李
 [02:17.01]I never expected it to
 [02:17.01]非我所望
@@ -41,13 +41,13 @@ const lrcStr = `
 [02:42.01]我始终信守诺言
 [02:45.01]Don't keep your distance
 [02:45.01]别把我拒之千里
-[02:53.01]And as for fortune, and as for fame
+[02:53.01]And as for _____fortune, and as for fame
 [02:53.01]不管是名与利
 [03:00.01]I never invited them in
 [03:00.01]我不曾有所求
 [03:06.01]Though it seemed to the world they were all I desired
 [03:06.01]尽管对全世界来说 它们正是我所渴望的
-[03:12.01]They are illusions
+[03:12.01]They are ______illusions
 [03:12.01]它们不过是泡影
 [03:16.01]They're not the solutions they promised to be
 [03:16.01]绝非如它们所承诺的那样 是一切的解决途径

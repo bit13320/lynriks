@@ -1,0 +1,59 @@
+<!DOCTYPE html> <html> <head> <title>Play MP3 with Music Controls</title> <style> #music-box { display: none; margin: 20px auto; padding: 10px; background-color: #f0f0f0; width: 300px; text-align: center; }
+	button {
+		margin: 10px;
+		padding: 10px;
+		background-color: #ccc;
+		border: none;
+		border-radius: 5px;
+		font-size: 16px;
+		cursor: pointer;
+	}
+	
+	button.green {
+		background-color: green;
+	}
+</style>
+</head> <body> <audio id="music-player" controls> <source src="это_ли_счастье.mp3" type="audio/mpeg"> </audio>
+<div id="music-box">
+	<button id="button-A">A</button>
+	<button id="button-B">B</button>
+	<button id="button-C">C</button>
+	<button id="button-D">D</button>
+	<p>Choose here</p>
+</div>
+
+<script>
+	const musicPlayer = document.getElementById('music-player');
+	const musicBox = document.getElementById('music-box');
+	const buttonA = document.getElementById('button-A');
+	const buttonB = document.getElementById('button-B');
+	const buttonC = document.getElementById('button-C');
+	const buttonD = document.getElementById('button-D');
+	
+	musicPlayer.addEventListener('timeupdate', function() {
+		if (musicPlayer.currentTime >= 10) {
+			musicBox.style.display = 'block';
+		}
+	});
+	
+	buttonA.addEventListener('click', function() {
+		musicPlayer.currentTime -= 5;
+		alert('Wrong');
+	});
+	
+	buttonB.addEventListener('click', function() {
+		musicPlayer.currentTime -= 5;
+		alert('Wrong');
+	});
+	
+	buttonC.addEventListener('click', function() {
+		buttonC.classList.add('green');
+		musicBox.style.display = 'none';
+	});
+	
+	buttonD.addEventListener('click', function() {
+		musicPlayer.currentTime -= 5;
+		alert('Wrong');
+	});
+</script>
+</body> </html>

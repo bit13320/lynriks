@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Madonna Music</title>
+	<style type="text/css">
+		#container {
+			height: 100px;
+			width: 600px;
+			margin: auto;
+			padding-top: 20px;
+			text-align: center;
+			font-size: 20px;
+			border: 1px solid black;
+		}
+		
+		#buttons {
+			display: none;
+		}
+		
+		.red {
+			background-color: red;
+		}
+		
+		.green {
+			background-color: green;
+		}
+	</style>
+</head>
+
+<body>
+	<audio id="audio" controls>
+		<source src="Madonna.mp3" type="audio/mp3">
+	</audio>
+	
+	<div id="container">
+		请选择适当单词填空
+		<div id="buttons">
+			<button id="a">A: freedom</button>
+			<button id="b">B: impressed</button>
+			<button id="c">C: nines</button>
+			<button id="d">D: heel</button>
+		</div>
+	</div>
+	
+	<script type="text/javascript">
+		var audio = document.getElementById("audio");
+		var container = document.getElementById("container");
+		var buttons = document.getElementById("buttons");
+		var countdown;
+		
+		audio.addEventListener("timeupdate", function() {
+			if (audio.currentTime >= 80) {
+				buttons.style.display = "block";
+				countdown = setTimeout(function() {
+					audio.currentTime = 80;
+					container.innerHTML = "";
+					buttons.style.display = "none";
+				}, 8000);
+			}
+		});
+		
+		function handleButtonPress(button) {
+			clearTimeout(countdown);
+			
+			if (button.id === "c") {
+				button.classList.add("green");
+				setTimeout(function() {
+					container.innerHTML = "";
+					buttons.style.display = "none";
+				}, 1000);
+			} else {
+				button.classList.add("red");
+				audio.currentTime = 80;
+				countdown = setTimeout(function() {
+					audio.currentTime = 80;
+					container.innerHTML = "";
+					buttons.style.display = "none";
+				}, 8000);
+			}
+		}
+		
+		document.getElementById("a").addEventListener("click", function() {
+			handleButtonPress(this);
+		});
+		
+		document.getElementById("b").addEventListener("click", function() {
+			handleButtonPress(this);
+		});
+		
+		document.getElementById("c").addEventListener("click", function() {
+			handleButtonPress(this);
+		});
+		
+		document.getElementById("d").addEventListener("click", function() {
+			handleButtonPress(this);
+		});
+	</script>
+</body>
+</html>
