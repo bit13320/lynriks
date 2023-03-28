@@ -58,6 +58,29 @@
       display: block;
       margin: 0 auto;
     }
+
+    div {
+  display: flex;
+  justify-content: center;
+}
+/*按钮样式*/
+button {
+ 
+  border: none;
+  font-weight: bold;
+  color: rgb(0, 0, 0);
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 10px;
+  cursor: pointer;
+  border-radius: 5px;
+  outline: none;
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.24), 0 3px 6px rgba(0, 0, 0, 0.12);
+}
+
   </style>
 </head>
 <body>
@@ -70,6 +93,14 @@
 
   <audio src="Madonna.mp3" controls></audio>
 
+  <div style="text-align:center;">
+    <button id="BtnA" style="display:none;">nines</button>
+    <button id="BtnB" style="display:none;">heel</button>
+    <button id="BtnC" style="display:none;">freedom</button>
+    <button id="BtnD" style="display:none;">impressed</button>
+    <button id="BtnE" style="display:none;">fortune</button>
+    <button id="BtnF" style="display:none;">illusions</button>
+  </div>
 
   <!--
   audio 标签
@@ -144,7 +175,136 @@
         ul.children[index].className = 'active';
       }
     });
+
   </script>
+ 
+  <script>
+    //以下为做题相关
+    const BtnA = document.getElementById("BtnA");//隐藏按钮相关
+    const BtnB = document.getElementById("BtnB");
+    const BtnC = document.getElementById("BtnC");
+    const BtnD = document.getElementById("BtnD");
+    const BtnE = document.getElementById("BtnE");
+    const BtnF = document.getElementById("BtnF");
+
+  const buttons = document.querySelectorAll("button"); // Select all buttons
+  const btnA = document.querySelector("#BtnA"); // Select BtnA
+  const btnB = document.querySelector("#BtnB");
+  const btnC = document.querySelector("#BtnC");
+  const btnD = document.querySelector("#BtnD");
+  const btnE = document.querySelector("#BtnE");
+  const btnF = document.querySelector("#BtnF");
+  
+    
+  // 只在特定时间出现按钮
+    audio.addEventListener("timeupdate", function() {
+    const time = audio.currentTime;
+    
+    if (time >= 83 && time <= 92) {
+      BtnA.style.display = "inline-block";
+      BtnB.style.display = "inline-block";
+      BtnC.style.display = "inline-block";
+      BtnD.style.display = "inline-block";
+      BtnE.style.display = "inline-block";
+      BtnF.style.display = "inline-block";
+      
+      buttons.forEach((button) => {
+        button.addEventListener("click", () => {
+          btnA.style.backgroundColor = "green"; // Change background color of BtnA to green
+    }); // 监听按钮点击事件 只在特定时间 出现对应按钮变色
+        //setTimeout(function() {
+          //BtnA.style.backgroundColor = "";
+        //}, 3000);//3s后颜色消失
+    });
+
+    } else if (time >= 109 && time <= 118) {
+      BtnA.style.display = "inline-block";
+      BtnB.style.display = "inline-block";
+      BtnC.style.display = "inline-block";
+      BtnD.style.display = "inline-block";
+      BtnE.style.display = "inline-block";
+      BtnF.style.display = "inline-block";
+
+      buttons.forEach((button) => {
+        button.addEventListener("click", () => {
+          btnB.style.backgroundColor = "green"; // Change background color of BtnA to green
+    }); // 监听按钮点击事件 只在特定时间 出现对应按钮变色
+
+    });
+
+  } else if (time >= 120 && time <= 129) {
+      BtnA.style.display = "inline-block";
+      BtnB.style.display = "inline-block";
+      BtnC.style.display = "inline-block";
+      BtnD.style.display = "inline-block";
+      BtnE.style.display = "inline-block";
+      BtnF.style.display = "inline-block";
+
+      buttons.forEach((button) => {
+        button.addEventListener("click", () => {
+          btnC.style.backgroundColor = "green"; // Change background color of BtnA to green
+    }); // 监听按钮点击事件 只在特定时间 出现对应按钮变色
+
+    });
+
+  } else if (time >= 131 && time <= 140) {
+      BtnA.style.display = "inline-block";
+      BtnB.style.display = "inline-block";
+      BtnC.style.display = "inline-block";
+      BtnD.style.display = "inline-block";
+      BtnE.style.display = "inline-block";
+      BtnF.style.display = "inline-block";
+
+      buttons.forEach((button) => {
+        button.addEventListener("click", () => {
+          btnD.style.backgroundColor = "green"; // Change background color of BtnA to green
+    }); // 监听按钮点击事件 只在特定时间 出现对应按钮变色
+
+    });
+
+  } else if (time >= 174 && time <= 183) {
+      BtnA.style.display = "inline-block";
+      BtnB.style.display = "inline-block";
+      BtnC.style.display = "inline-block";
+      BtnD.style.display = "inline-block";
+      BtnE.style.display = "inline-block";
+      BtnF.style.display = "inline-block";
+
+      buttons.forEach((button) => {
+        button.addEventListener("click", () => {
+          btnE.style.backgroundColor = "green"; // Change background color of BtnA to green
+    }); // 监听按钮点击事件 只在特定时间 出现对应按钮变色
+
+    });
+
+  } else if (time >= 192 && time <= 201) {
+      BtnA.style.display = "inline-block";
+      BtnB.style.display = "inline-block";
+      BtnC.style.display = "inline-block";
+      BtnD.style.display = "inline-block";
+      BtnE.style.display = "inline-block";
+      BtnF.style.display = "inline-block";
+
+      buttons.forEach((button) => {
+        button.addEventListener("click", () => {
+          btnF.style.backgroundColor = "green"; // Change background color of BtnA to green
+    }); // 监听按钮点击事件 只在特定时间 出现对应按钮变色
+
+    });
+
+    } else {
+      BtnA.style.display = "none";
+      BtnB.style.display = "none";
+      BtnC.style.display = "none";
+      BtnD.style.display = "none";
+      BtnE.style.display = "none";
+      BtnF.style.display = "none";
+    }
+    });
+    // 监听按钮点击事件 只在特定时间 出现对应按钮变色
+</script>
+
+
 
 </body>
 </html>

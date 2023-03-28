@@ -1,0 +1,45 @@
+<!--音乐播放器-->
+<audio src="Madonna.mp3" controls></audio>
+
+
+<!--隐藏的按钮N和H-->
+<button id="BtnA" style="display:none;">nines</button>
+<button id="BtnB" style="display:none;">heel</button>
+
+<script>
+    //以下为做题相关
+    const BtnA = document.getElementById("BtnA");
+    const BtnB = document.getElementById("BtnB");
+  
+    // 监听音频时间更新事件
+  audio.addEventListener("timeupdate", function() {
+    const time = audio.currentTime;
+    if (time >= 83 && time <= 92) {
+      BtnA.style.display = "block";
+      BtnB.style.display = "block";
+    } else if (time >= 109 && time <= 118) {
+      BtnA.style.display = "block";
+      BtnB.style.display = "block";
+    } else {
+      BtnA.style.display = "none";
+      BtnB.style.display = "none";
+    }
+  });
+    // 监听按钮点击事件
+    BtnA.addEventListener("click", function() {
+    BtnA.style.backgroundColor = "green";
+    BtnB.style.backgroundColor = "red";
+    setTimeout(function() {
+      BtnA.style.backgroundColor = "";
+      BtnB.style.backgroundColor = "";
+    }, 3000);
+  });
+  BtnB.addEventListener("click", function() {
+    BtnB.style.backgroundColor = "green";
+    BtnA.style.backgroundColor = "red";
+    setTimeout(function() {
+      BtnB.style.backgroundColor = "";
+      BtnA.style.backgroundColor = "";
+    }, 3000);
+  });
+</script>

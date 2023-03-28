@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Madonna Music Player</title>
+	<style>
+		.card {
+			height: 100px;
+			width: 600px;
+			background-color: #ffffff;
+			border-radius: 5px;
+			box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+			display: flex;
+			align-items: center;
+			justify-content: space-around;
+			margin-top: 50px;
+		}
+
+		button {
+			height: 40px;
+			width: 80px;
+			font-size: 16px;
+			color: #ffffff;
+			border: none;
+			border-radius: 20px;
+			cursor: pointer;
+			outline: none;
+		}
+
+		.button-a {
+			background-color: #ff0000;
+		}
+
+		.button-b {
+			background-color: #ff0000;
+		}
+
+		.button-c {
+			background-color: #ff0000;
+		}
+
+		.button-d {
+			background-color: #ff0000;
+		}
+
+		.button-c.green {
+			background-color: #00ff00;
+		}
+
+		.button-d.green {
+			background-color: #00ff00;
+		}
+	</style>
+	<script>
+		function playMusic() {
+			var audio = new Audio('Madonna.mp3');
+			audio.controls = true;
+			audio.autoplay = true;
+			document.getElementById('music-player').appendChild(audio);
+
+			var buttonA = document.getElementById('button-a');
+			var buttonB = document.getElementById('button-b');
+			var buttonC = document.getElementById('button-c');
+			var buttonD = document.getElementById('button-d');
+
+			var startTimeC = 0; // 0秒至01分30秒内按下C按钮的时间
+			var startTimeD = 91; // 01分31秒至01分55秒内���下D按钮的时间
+			var startTimeA = 116; // 01分56秒至02分03秒内按下A按钮的时间
+
+			// 按钮点击事
+			buttonA.onclick = function() {
+				if (audio.currentTime >= startTimeA && audio.currentTime < 123) { // 如果在指定时间范围内按下了A按钮
+					buttonA.classList.add('green');
+					buttonB.classList.remove('green');
+					buttonC.classList.remove('green');
+					buttonD.classList.remove('green');
+				} else {
+					pauseMusic(audio); // 音乐暂停
+				}
+			};
+
+			buttonB.onclick = function() {
+				if (audio.currentTime >= startTimeA && audio.currentTime < 123) { // 如果在指定时间范围内按下了B按钮
+					buttonA.classList.remove('green');
+					buttonB.classList.add('green');
+					buttonC.classList.remove('green');
+					buttonD.classList.remove('green');
+				} else {
+					pauseMusic(audio); // 音乐暂停
+				}
+			};
+
+			buttonC.onclick = function() {
+				if (audio.currentTime >= startTimeC && audio.currentTime < 90) { // 如果在指定时间范围内按下了C按钮
+					buttonA.classList.remove('green');
+					buttonB.classList.remove('green');
+					buttonC.classList.add('green');
+					buttonD.classList.remove('green');
+				} else {
+					pauseMusic(audio); // 音乐暂停
+					startTimeC = audio.currentTime; // 记录下按下C按钮的时间
+				}
+			};
+
+			buttonD.onclick = function() {
+				if (audio.currentTime >= startTimeD && audio.currentTime < 116) { // 如果在指定时间范围内按下了D按钮
+					buttonA.classList.remove('green');
+					buttonB.classList.remove('green');
+					buttonC.classList.remove('green');
+					buttonD.classList.add('green');
+				} else {
+					pauseMusic(audio); // 音乐暂停
+					startTimeD = audio.currentTime; // 记录下按下D按钮的时间
+				}
+			};
+		}
+
+		function pauseMusic(audio) {
+			audio.pause();
+			var buttonA = document.getElementById('button-a');
+			var buttonB = document.getElementById('button-b');
+			var buttonC = document.getElementById('button-c');
+			var buttonD = document.getElementById('button-d');
+
+			buttonA.classList.add('green'); // A按钮变绿色
+			buttonB.classList.add('green'); // B按钮变绿色
+			buttonC.classList.add('green'); //
+            buttonD.classList.add('green');
+
+		}
+	</script>
+</head>
+<body onload="playMusic()">
+	<div class="card">
+		请选择适当单词填空：
+        <button id="button-a" class="button-a">freedom</button>
+        <button id="button-b" class="button-b">impressed</button>
+		<button id="button-c" class="button-c">nines</button>
+		<button id="button-d" class="button-d">heel</button>
+	</div>
+	<div id="music-player"></div>
+</body>
+</html>
