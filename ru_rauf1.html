@@ -16,11 +16,11 @@
 
     #box{
       /*设置基本样式*/
-      width: 700px;
-      height: 700px;
-      border: 10px solid rgb(172, 9, 172);
+      width: 1000px;
+      height: 1700px;
+      border: 80px solid rgb(66, 0, 66);
       margin: 10px auto 0;
-      background-color: #36cfc5;
+      background-color: #09b2a7;
 
       /*父元素一般设置相对定位，而子元素设置成绝对定位*/
       /*绝对定位时，使用 top，bottom，left，right 进行控制（固定定位也行）*/
@@ -40,21 +40,22 @@
     /* > 是 CSS 的子选择器*/
     ul > li {
       width: 100%;
-      height: 26px;
+      height: 75px;
       line-height: 20px;
       text-align: center;
-      font-size: 18px;
+      font-size: 50px;
     }
 
     /*li.active 表示 li 有一个 active 的类选择器*/
     ul > li.active {
       color: rgb(123, 16, 16);
-      font-size: 27px;
-      font-weight: 900;
+      font-size: 50px;
+      font-weight: bold;
     }
 
     audio {
-      width: 500px;
+      width: 1000px;
+      height: 70px;
       display: block;
       margin: 0 auto;
     }
@@ -69,16 +70,16 @@ button {
   border: none;
   font-weight: bold;
   color: rgb(0, 0, 0);
-  padding: 15px 32px;
+  padding: 35px 55px;
   text-align: center;
   text-decoration: none;
   display: inline-block;
-  font-size: 16px;
-  margin: 10px;
+  font-size: 39px;
+  margin: 11px;
   cursor: pointer;
-  border-radius: 5px;
+  border-radius: 9px;
   outline: none;
-  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.24), 0 3px 6px rgba(0, 0, 0, 0.12);
+  box-shadow: 0 9px 16px rgba(0, 0, 0, 0.24), 0 3px 6px rgba(0, 0, 0, 0.12);
 }
 
   </style>
@@ -182,17 +183,12 @@ button {
     const BtnB = document.getElementById("BtnB");
     const BtnC = document.getElementById("BtnC");
     const BtnD = document.getElementById("BtnD");
-    const BtnE = document.getElementById("BtnE");
-    const BtnF = document.getElementById("BtnF");
 
   const buttons = document.querySelectorAll("button"); // Select all buttons
   const btnA = document.querySelector("#BtnA"); // Select BtnA
   const btnB = document.querySelector("#BtnB");
   const btnC = document.querySelector("#BtnC");
   const btnD = document.querySelector("#BtnD");
-  const btnE = document.querySelector("#BtnE");
-  const btnF = document.querySelector("#BtnF");
-  
     
   // 只在特定时间出现按钮
     audio.addEventListener("timeupdate", function() {
@@ -203,8 +199,7 @@ button {
       BtnB.style.display = "inline-block";
       BtnC.style.display = "inline-block";
       BtnD.style.display = "inline-block";
-      BtnE.style.display = "inline-block";
-      BtnF.style.display = "inline-block";
+
       
       buttons.forEach((button) => {
         button.addEventListener("click", () => {
@@ -220,8 +215,7 @@ button {
       BtnB.style.display = "inline-block";
       BtnC.style.display = "inline-block";
       BtnD.style.display = "inline-block";
-      BtnE.style.display = "inline-block";
-      BtnF.style.display = "inline-block";
+
 
       buttons.forEach((button) => {
         button.addEventListener("click", () => {
@@ -235,8 +229,6 @@ button {
       BtnB.style.display = "inline-block";
       BtnC.style.display = "inline-block";
       BtnD.style.display = "inline-block";
-      BtnE.style.display = "inline-block";
-      BtnF.style.display = "inline-block";
 
       buttons.forEach((button) => {
         button.addEventListener("click", () => {
@@ -245,13 +237,12 @@ button {
 
     });
 
-  } else if (time >= 81 && time <= 91) {
+  } else if (time >= 81 && time <= 200) {
       BtnA.style.display = "inline-block";
       BtnB.style.display = "inline-block";
       BtnC.style.display = "inline-block";
       BtnD.style.display = "inline-block";
-      BtnE.style.display = "inline-block";
-      BtnF.style.display = "inline-block";
+
 
       buttons.forEach((button) => {
         button.addEventListener("click", () => {
@@ -265,8 +256,7 @@ button {
       BtnB.style.display = "none";
       BtnC.style.display = "none";
       BtnD.style.display = "none";
-      BtnE.style.display = "none";
-      BtnF.style.display = "none";
+
     }
     });
     // 监听按钮点击事件 只在特定时间 出现对应按钮变色
