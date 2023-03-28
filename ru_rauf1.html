@@ -5,6 +5,19 @@
   <title>Lynriks</title>
   <script src="lrc_это_ли_счастье.js"></script>
   <style>
+    body {
+        background-color: #0a2b4c;
+    }
+    p {
+      margin: auto;
+      max-width: 1000px;
+      font-size: 40px;
+      line-height: 1.5;
+      text-align: center;
+      color: #ffd900;
+      font-weight: bold;}
+    </style>
+  <style>
     * {
      margin: 0;
      padding: 0;
@@ -16,11 +29,11 @@
 
     #box{
       /*设置基本样式*/
-      width: 1000px;
-      height: 1700px;
+      width: 900px;
+      height: 1300px;
       border: 60px solid rgb(66, 0, 66);
       margin: 10px auto 0;
-      background-color: #09b2a7;
+      background-color: #098b82;
 
       /*父元素一般设置相对定位，而子元素设置成绝对定位*/
       /*绝对定位时，使用 top，bottom，left，right 进行控制（固定定位也行）*/
@@ -82,6 +95,15 @@ button {
   box-shadow: 0 9px 16px rgba(0, 0, 0, 0.24), 0 3px 6px rgba(0, 0, 0, 0.12);
 }
 
+#message {
+  font-size: 50px; /* increase the font size */
+  font-weight: bold; /* make text bold */
+  color: yellow; /* change text color to yellow */
+  margin-top: 10px; /* move element down 10 pixels */
+  border: 2px solid red; /* add a red border */
+  padding: 10px; /* add some padding inside the border */
+}
+
   </style>
 </head>
 <body>
@@ -93,6 +115,7 @@ button {
     </ul>
   </div>
 
+  <p>请等选项出现后 在下方进行选择</p>
 
   <div style="text-align:center;">
     <button id="BtnC" style="display:none;">подлость</button>
@@ -103,6 +126,8 @@ button {
     <button id="BtnD" style="display:none;">возвращайся</button>
     <button id="BtnB" style="display:none;">погасло</button>
   </div>
+
+  <div id="message"></div>
 
   <!--
   audio 标签
@@ -179,7 +204,7 @@ button {
       const index = timeArr.findIndex(item => item === timeStr);
       // 4-2 给 ul 赋值
       if (index !== -1) {
-        ul.style.top = -index * 20 + 150 + 'px';
+        ul.style.top = -index * 60 + 150 + 'px';//滚动速度调节
         ;[...ul.children].forEach(item => item.className = '');
         ul.children[index].className = 'active';
       }
@@ -209,15 +234,21 @@ button {
       BtnB.style.display = "inline-block";
       BtnC.style.display = "inline-block";
       BtnD.style.display = "inline-block";
-
-      
+     
       buttons.forEach((button) => {
         button.addEventListener("click", () => {
           btnA.style.backgroundColor = "green"; // Change background color of BtnA to green
+          //会自动消失的提示消息 用GPT生成
+          const messageEl = document.getElementById("message");
+          messageEl.innerText = "Your message here";
+          setTimeout(() => {
+          messageEl.innerText = "";
+          }, 3000); // Remove the message after 3 seconds
     }); // 监听按钮点击事件 只在特定时间 出现对应按钮变色
         //setTimeout(function() {
           //BtnA.style.backgroundColor = "";
         //}, 3000);//3s后颜色消失
+        
     });
 
     } else if (time >= 40 && time <= 48) {
