@@ -1,310 +1,63 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <title>Lynriks</title>
-  <script src="lrc_Madonna.js"></script>
-  <style>
-    * {
-     margin: 0;
-     padding: 0;
-    }
-
-    ul, li {
-      list-style: none;
-    }
-
-    #box{
-      /*设置基本样式*/
-      width: 700px;
-      height: 700px;
-      border: 10px solid rgb(172, 9, 172);
-      margin: 10px auto 0;
-      background-color: #36cfc5;
-
-      /*父元素一般设置相对定位，而子元素设置成绝对定位*/
-      /*绝对定位时，使用 top，bottom，left，right 进行控制（固定定位也行）*/
-      position: relative;
-      /*超出 div 的部分将被隐藏*/
-      overflow: hidden;
-    }
-
-    ul {
-      position: absolute;
-      top: 150px;
-      width: 100%;
-
-      transition: top .3s linear;
-    }
-
-    /* > 是 CSS 的子选择器*/
-    ul > li {
-      width: 100%;
-      height: 26px;
-      line-height: 20px;
-      text-align: center;
-      font-size: 18px;
-    }
-
-    /*li.active 表示 li 有一个 active 的类选择器*/
-    ul > li.active {
-      color: rgb(123, 16, 16);
-      font-size: 27px;
-      font-weight: 900;
-    }
-
-    audio {
-      width: 500px;
-      display: block;
-      margin: 0 auto;
-    }
-
-    div {
-  display: flex;
-  justify-content: center;
-}
-/*按钮样式*/
-button {
- 
-  border: none;
-  font-weight: bold;
-  color: rgb(0, 0, 0);
-  padding: 15px 32px;
-  text-align: center;
-  text-decoration: none;
-  display: inline-block;
-  font-size: 16px;
-  margin: 10px;
-  cursor: pointer;
-  border-radius: 5px;
-  outline: none;
-  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.24), 0 3px 6px rgba(0, 0, 0, 0.12);
-}
-
-  </style>
-</head>
-<body>
-
-  <div id="box">
-    <ul>
-      <li class="active">1</li>
-    </ul>
-  </div>
-
-  <audio src="Madonna.mp3" controls></audio>
-
-  <div style="text-align:center;">
-    <button id="BtnA" style="display:none;">nines</button>
-    <button id="BtnB" style="display:none;">heel</button>
-    <button id="BtnC" style="display:none;">freedom</button>
-    <button id="BtnD" style="display:none;">impressed</button>
-    <button id="BtnE" style="display:none;">fortune</button>
-    <button id="BtnF" style="display:none;">illusions</button>
-  </div>
-
-  <!--
-  audio 标签
-  + 作用：引入一个音频文件
-  + 属性：
-    + src
-    + controls ：显示播放器
-    + autoplay ：自动播放（有些浏览器不支持）
-  -->
-  <script>
-
-    /**
-     * 1. 拆开歌词
-     *    准备两个空数组: 时间数组  歌词数组
-     *    准备正则表达式
-     *    循环截取
-     *
-     * 2. 渲染页面
-     *    遍历数组,生成 li 放到 ul 中
-     *
-     * 3. 随着音乐的播放拿到对应的时间
-     *    时间格式化成 00:00 的时间格式
-     *
-     * 4. 找到时间数组里对应的时间索引
-     *    时间数组与歌词数组一一对应
-     *
-     */
-    // 1-1 准备数组
-    const timeArr = [];
-    const lrcArr = [];
-
-    // 1-2 准备正则
-    /**
-     * 解析:截取后将获得 [XX:XX.XX]AAAAA (X表示数字,A表示汉字)   AAAAA 两种字串
-     *      g 是全局标识符,使截取后的下标指向下次的位置
-     * @type {RegExp}
-     */
-    const reg = /\[(\d{2}:\d{2})\.\d{2}\](.+)/g;
-    // 1-3 截取
-    let tmp = reg.exec(lrcStr);
-    while (tmp) {
-      timeArr.push(tmp[1]);
-      lrcArr.push(tmp[2]);
-      tmp = reg.exec(lrcStr)
-    }
-
-    // 2-1 获取 ul 标签
-    const ul = document.querySelector('ul');
-    // 2-2 循环遍历歌词数组
-    let str = '';
-    lrcArr.forEach((item, index) => {
-      str += `<li class="${index === 0 ? 'active' : ''}">${item}</li>`
-    });
-    ul.innerHTML = str;
-
-    // 3-1 获取 audio 标签
-    const audio = document.querySelector('audio');
-    // 3-2 绑定事件
-    audio.addEventListener('timeupdate', function () {
-      // 3-3 格式化拿到的时间
-      const {currentTime} = this;
-      const minutes = parseInt(currentTime / 60);
-      const seconds = parseInt(currentTime % 60);
-      const timeStr = (minutes < 10 ? '0' + minutes : minutes) + ":" + (seconds < 10 ? '0' + seconds : seconds);
-
-      // 4-1 在时间数组中找到对应的索引
-      const index = timeArr.findIndex(item => item === timeStr);
-      // 4-2 给 ul 赋值
-      if (index !== -1) {
-        ul.style.top = -index * 20 + 150 + 'px';
-        ;[...ul.children].forEach(item => item.className = '');
-        ul.children[index].className = 'active';
+<html>
+  <head>
+    <title>Navigation Page</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        background-color: #f5f5f5;
+        margin: 0;
       }
-    });
-
-  </script>
- 
-  <script>
-    //以下为做题相关
-    const BtnA = document.getElementById("BtnA");//隐藏按钮相关
-    const BtnB = document.getElementById("BtnB");
-    const BtnC = document.getElementById("BtnC");
-    const BtnD = document.getElementById("BtnD");
-    const BtnE = document.getElementById("BtnE");
-    const BtnF = document.getElementById("BtnF");
-
-  const buttons = document.querySelectorAll("button"); // Select all buttons
-  const btnA = document.querySelector("#BtnA"); // Select BtnA
-  const btnB = document.querySelector("#BtnB");
-  const btnC = document.querySelector("#BtnC");
-  const btnD = document.querySelector("#BtnD");
-  const btnE = document.querySelector("#BtnE");
-  const btnF = document.querySelector("#BtnF");
-  
-    
-  // 只在特定时间出现按钮
-    audio.addEventListener("timeupdate", function() {
-    const time = audio.currentTime;
-    
-    if (time >= 83 && time <= 92) {
-      BtnA.style.display = "inline-block";
-      BtnB.style.display = "inline-block";
-      BtnC.style.display = "inline-block";
-      BtnD.style.display = "inline-block";
-      BtnE.style.display = "inline-block";
-      BtnF.style.display = "inline-block";
       
-      buttons.forEach((button) => {
-        button.addEventListener("click", () => {
-          btnA.style.backgroundColor = "green"; // Change background color of BtnA to green
-    }); // 监听按钮点击事件 只在特定时间 出现对应按钮变色
-        //setTimeout(function() {
-          //BtnA.style.backgroundColor = "";
-        //}, 3000);//3s后颜色消失
-    });
-
-    } else if (time >= 109 && time <= 118) {
-      BtnA.style.display = "inline-block";
-      BtnB.style.display = "inline-block";
-      BtnC.style.display = "inline-block";
-      BtnD.style.display = "inline-block";
-      BtnE.style.display = "inline-block";
-      BtnF.style.display = "inline-block";
-
-      buttons.forEach((button) => {
-        button.addEventListener("click", () => {
-          btnB.style.backgroundColor = "green"; // Change background color of BtnA to green
-    }); // 监听按钮点击事件 只在特定时间 出现对应按钮变色
-
-    });
-
-  } else if (time >= 120 && time <= 129) {
-      BtnA.style.display = "inline-block";
-      BtnB.style.display = "inline-block";
-      BtnC.style.display = "inline-block";
-      BtnD.style.display = "inline-block";
-      BtnE.style.display = "inline-block";
-      BtnF.style.display = "inline-block";
-
-      buttons.forEach((button) => {
-        button.addEventListener("click", () => {
-          btnC.style.backgroundColor = "green"; // Change background color of BtnA to green
-    }); // 监听按钮点击事件 只在特定时间 出现对应按钮变色
-
-    });
-
-  } else if (time >= 131 && time <= 140) {
-      BtnA.style.display = "inline-block";
-      BtnB.style.display = "inline-block";
-      BtnC.style.display = "inline-block";
-      BtnD.style.display = "inline-block";
-      BtnE.style.display = "inline-block";
-      BtnF.style.display = "inline-block";
-
-      buttons.forEach((button) => {
-        button.addEventListener("click", () => {
-          btnD.style.backgroundColor = "green"; // Change background color of BtnA to green
-    }); // 监听按钮点击事件 只在特定时间 出现对应按钮变色
-
-    });
-
-  } else if (time >= 174 && time <= 183) {
-      BtnA.style.display = "inline-block";
-      BtnB.style.display = "inline-block";
-      BtnC.style.display = "inline-block";
-      BtnD.style.display = "inline-block";
-      BtnE.style.display = "inline-block";
-      BtnF.style.display = "inline-block";
-
-      buttons.forEach((button) => {
-        button.addEventListener("click", () => {
-          btnE.style.backgroundColor = "green"; // Change background color of BtnA to green
-    }); // 监听按钮点击事件 只在特定时间 出现对应按钮变色
-
-    });
-
-  } else if (time >= 192 && time <= 201) {
-      BtnA.style.display = "inline-block";
-      BtnB.style.display = "inline-block";
-      BtnC.style.display = "inline-block";
-      BtnD.style.display = "inline-block";
-      BtnE.style.display = "inline-block";
-      BtnF.style.display = "inline-block";
-
-      buttons.forEach((button) => {
-        button.addEventListener("click", () => {
-          btnF.style.backgroundColor = "green"; // Change background color of BtnA to green
-    }); // 监听按钮点击事件 只在特定时间 出现对应按钮变色
-
-    });
-
-    } else {
-      BtnA.style.display = "none";
-      BtnB.style.display = "none";
-      BtnC.style.display = "none";
-      BtnD.style.display = "none";
-      BtnE.style.display = "none";
-      BtnF.style.display = "none";
-    }
-    });
-    // 监听按钮点击事件 只在特定时间 出现对应按钮变色
-</script>
-
-
-
-</body>
+      h1 {
+        text-align: center;
+        color: #333;
+        margin: 20px 0;
+      }
+      
+      .nav {
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+        background-color: #ddd;
+        padding: 10px;
+        border-bottom: 2px solid #777;
+      }
+      
+      .nav a {
+        text-decoration: none;
+        color: #333;
+        font-size: 20px;
+        border: 2px solid #777;
+        padding: 10px 20px;
+        border-radius: 10px;
+        transition: all 0.3s ease;
+      }
+      
+      .nav a:hover {
+        background-color: #777;
+        color: #fff;
+      }
+      
+      @media screen and (max-width: 600px) {
+        .nav {
+          flex-wrap: wrap;
+        }
+        
+        .nav a {
+          margin-top: 10px;
+          width: 100%;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <h1>请选择曲目</h1>
+    <div class="nav">
+      <a href="https://bit13320.github.io/lynriks/en_Madonna1.html">Don't Cry for Me Argentina (英语)</a>
+      <a href="https://bit13320.github.io/lynriks/ru_rauf1.html">это_ли_счастье（俄语）</a>
+      <a href="https://bit13320.github.io/lynriks/de_1jahr.html">Ein Jahr zu spät（德语）</a>
+    </div>
+  </body>
 </html>

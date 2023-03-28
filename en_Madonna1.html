@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <title>Lynriks</title>
-  <script src="lrc_это_ли_счастье.js"></script>
+  <script src="lrc_Madonna.js"></script>
   <style>
     * {
      margin: 0;
@@ -16,11 +16,11 @@
 
     #box{
       /*设置基本样式*/
-      width: 1000px;
-      height: 1700px;
-      border: 60px solid rgb(66, 0, 66);
+      width: 700px;
+      height: 700px;
+      border: 10px solid rgb(172, 9, 172);
       margin: 10px auto 0;
-      background-color: #09b2a7;
+      background-color: #36cfc5;
 
       /*父元素一般设置相对定位，而子元素设置成绝对定位*/
       /*绝对定位时，使用 top，bottom，left，right 进行控制（固定定位也行）*/
@@ -40,22 +40,21 @@
     /* > 是 CSS 的子选择器*/
     ul > li {
       width: 100%;
-      height: 75px;
+      height: 26px;
       line-height: 20px;
       text-align: center;
-      font-size: 50px;
+      font-size: 18px;
     }
 
     /*li.active 表示 li 有一个 active 的类选择器*/
     ul > li.active {
       color: rgb(123, 16, 16);
-      font-size: 50px;
-      font-weight: bold;
+      font-size: 27px;
+      font-weight: 900;
     }
 
     audio {
-      width: 1000px;
-      height: 100px;
+      width: 500px;
       display: block;
       margin: 0 auto;
     }
@@ -70,22 +69,21 @@ button {
   border: none;
   font-weight: bold;
   color: rgb(0, 0, 0);
-  padding: 35px 55px;
+  padding: 15px 32px;
   text-align: center;
   text-decoration: none;
   display: inline-block;
-  font-size: 39px;
-  margin: 11px;
+  font-size: 16px;
+  margin: 10px;
   cursor: pointer;
-  border-radius: 9px;
+  border-radius: 5px;
   outline: none;
-  box-shadow: 0 9px 16px rgba(0, 0, 0, 0.24), 0 3px 6px rgba(0, 0, 0, 0.12);
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.24), 0 3px 6px rgba(0, 0, 0, 0.12);
 }
 
   </style>
 </head>
 <body>
-    <audio src="это_ли_счастье.mp3" controls></audio>
 
   <div id="box">
     <ul>
@@ -93,15 +91,15 @@ button {
     </ul>
   </div>
 
+  <audio src="Madonna.mp3" controls></audio>
 
   <div style="text-align:center;">
-    <button id="BtnC" style="display:none;">подлость</button>
-    <button id="BtnA" style="display:none;">искренних</button>
-  </div>
-
-  <div style="text-align:center;">
-    <button id="BtnD" style="display:none;">возвращайся</button>
-    <button id="BtnB" style="display:none;">погасло</button>
+    <button id="BtnA" style="display:none;">nines</button>
+    <button id="BtnB" style="display:none;">heel</button>
+    <button id="BtnC" style="display:none;">freedom</button>
+    <button id="BtnD" style="display:none;">impressed</button>
+    <button id="BtnE" style="display:none;">fortune</button>
+    <button id="BtnF" style="display:none;">illusions</button>
   </div>
 
   <!--
@@ -193,23 +191,29 @@ button {
     const BtnB = document.getElementById("BtnB");
     const BtnC = document.getElementById("BtnC");
     const BtnD = document.getElementById("BtnD");
+    const BtnE = document.getElementById("BtnE");
+    const BtnF = document.getElementById("BtnF");
 
   const buttons = document.querySelectorAll("button"); // Select all buttons
   const btnA = document.querySelector("#BtnA"); // Select BtnA
   const btnB = document.querySelector("#BtnB");
   const btnC = document.querySelector("#BtnC");
   const btnD = document.querySelector("#BtnD");
+  const btnE = document.querySelector("#BtnE");
+  const btnF = document.querySelector("#BtnF");
+  
     
   // 只在特定时间出现按钮
     audio.addEventListener("timeupdate", function() {
     const time = audio.currentTime;
     
-    if (time >= 22 && time <= 30) {
+    if (time >= 83 && time <= 92) {
       BtnA.style.display = "inline-block";
       BtnB.style.display = "inline-block";
       BtnC.style.display = "inline-block";
       BtnD.style.display = "inline-block";
-
+      BtnE.style.display = "inline-block";
+      BtnF.style.display = "inline-block";
       
       buttons.forEach((button) => {
         button.addEventListener("click", () => {
@@ -220,12 +224,13 @@ button {
         //}, 3000);//3s后颜色消失
     });
 
-    } else if (time >= 40 && time <= 48) {
+    } else if (time >= 109 && time <= 118) {
       BtnA.style.display = "inline-block";
       BtnB.style.display = "inline-block";
       BtnC.style.display = "inline-block";
       BtnD.style.display = "inline-block";
-
+      BtnE.style.display = "inline-block";
+      BtnF.style.display = "inline-block";
 
       buttons.forEach((button) => {
         button.addEventListener("click", () => {
@@ -234,11 +239,13 @@ button {
 
     });
 
-  } else if (time >= 70 && time <= 80) {
+  } else if (time >= 120 && time <= 129) {
       BtnA.style.display = "inline-block";
       BtnB.style.display = "inline-block";
       BtnC.style.display = "inline-block";
       BtnD.style.display = "inline-block";
+      BtnE.style.display = "inline-block";
+      BtnF.style.display = "inline-block";
 
       buttons.forEach((button) => {
         button.addEventListener("click", () => {
@@ -247,12 +254,13 @@ button {
 
     });
 
-  } else if (time >= 81 && time <= 200) {
+  } else if (time >= 131 && time <= 140) {
       BtnA.style.display = "inline-block";
       BtnB.style.display = "inline-block";
       BtnC.style.display = "inline-block";
       BtnD.style.display = "inline-block";
-
+      BtnE.style.display = "inline-block";
+      BtnF.style.display = "inline-block";
 
       buttons.forEach((button) => {
         button.addEventListener("click", () => {
@@ -261,12 +269,43 @@ button {
 
     });
 
-  }  else {
+  } else if (time >= 174 && time <= 183) {
+      BtnA.style.display = "inline-block";
+      BtnB.style.display = "inline-block";
+      BtnC.style.display = "inline-block";
+      BtnD.style.display = "inline-block";
+      BtnE.style.display = "inline-block";
+      BtnF.style.display = "inline-block";
+
+      buttons.forEach((button) => {
+        button.addEventListener("click", () => {
+          btnE.style.backgroundColor = "green"; // Change background color of BtnA to green
+    }); // 监听按钮点击事件 只在特定时间 出现对应按钮变色
+
+    });
+
+  } else if (time >= 192 && time <= 201) {
+      BtnA.style.display = "inline-block";
+      BtnB.style.display = "inline-block";
+      BtnC.style.display = "inline-block";
+      BtnD.style.display = "inline-block";
+      BtnE.style.display = "inline-block";
+      BtnF.style.display = "inline-block";
+
+      buttons.forEach((button) => {
+        button.addEventListener("click", () => {
+          btnF.style.backgroundColor = "green"; // Change background color of BtnA to green
+    }); // 监听按钮点击事件 只在特定时间 出现对应按钮变色
+
+    });
+
+    } else {
       BtnA.style.display = "none";
       BtnB.style.display = "none";
       BtnC.style.display = "none";
       BtnD.style.display = "none";
-
+      BtnE.style.display = "none";
+      BtnF.style.display = "none";
     }
     });
     // 监听按钮点击事件 只在特定时间 出现对应按钮变色
