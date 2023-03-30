@@ -1,4 +1,4 @@
-[00:00.000]Alena Sergeevna Shvetsova
+const lrcStr = `[00:00.000]Alena Sergeevna Shvetsova
 [00:00.000]Швецова Алёна Сергеевна
 [00:00.840]Я приду, когда зацветет весна
 [00:00.840]I'll come when spring blooms
@@ -103,4 +103,4 @@
 [02:23.890]Девочки, ножи, автобусы, поезда
 [02:23.890]Girls, knives, buses, trains
 [02:27.240]Это все весна
-[02:27.240]It's all spring
+[02:27.240]It's all spring`
