@@ -201,7 +201,7 @@ button {
       const index = timeArr.findIndex(item => item === timeStr);
       // 4-2 给 ul 赋值
       if (index !== -1) {
-        ul.style.top = -index * 90 + 150 + 'px';//滚动速度调节！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！
+        ul.style.top = -index * 70 + 70 + 'px';//滚动速度调节！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！
         ;[...ul.children].forEach(item => item.className = '');
         ul.children[index].className = 'active';
       }
