@@ -1,4 +1,5 @@
-const lrcStr = `[00:00.01] 作词 : Kai Kayef Fichtner
+const lrcStr = `[00:00.01] Ein Jahr zu Spät(晚了一年)
+[00:00.01] 作词 : Kai Kayef Fichtner
 [00:01.01] 作曲 : Kai Kayef Fichtner
 [00:05.81]Wache aus dem Traum
 [00:08.65]Ja, verdammt, Mann, ich glaub'
