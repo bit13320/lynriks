@@ -118,17 +118,10 @@ button {
   <p>请等选项出现后 在下方进行选择</p>
 
   <div style="text-align:center;">
-    <button id="BtnA" style="display:none;">merkte</button>
-    <button id="BtnB" style="display:none;">verlauf</button>
-    <button id="BtnC" style="display:none;">bei</button>
-    <button id="BtnD" style="display:none;">sie</button>
-  </div>
-
-  <div style="text-align:center;">
-    <button id="BtnE" style="display:none;"></button>
-    <button id="BtnF" style="display:none;"></button>
-    <button id="BtnG" style="display:none;"></button>
-    <button id="BtnH" style="display:none;"></button>
+    <button id="BtnA" style="display:none;">Украшал</button>
+    <button id="BtnB" style="display:none;">бросает</button>
+    <button id="BtnC" style="display:none;">ветками</button>
+    <button id="BtnD" style="display:none;">точит</button>
   </div>
 
   <div id="message"></div>
@@ -233,7 +226,7 @@ button {
     audio.addEventListener("timeupdate", function() {
     const time = audio.currentTime;
     
-    if (time >= 38 && time <= 48) {
+    if (time >= 44 && time <= 52) {
       BtnA.style.display = "inline-block";
       BtnB.style.display = "inline-block";
       BtnC.style.display = "inline-block";
@@ -241,10 +234,10 @@ button {
      
       buttons.forEach((button) => {
         button.addEventListener("click", () => {
-          btnC.style.backgroundColor = "green"; // Change background color of BtnA to green
+          btnB.style.backgroundColor = "green"; // Change background color of BtnA to green
           //会自动消失的提示消息 用GPT生成
           const messageEl = document.getElementById("message");
-          messageEl.innerText = "merk- 表示“注意”，与英文的mark和注意力,记忆有关联，merk an注意到 bemerken记住";
+          messageEl.innerText = "Стена бросала тень на землю";
           setTimeout(() => {
           messageEl.innerText = "";
           }, 8000); // Remove the message after 3 seconds
@@ -255,36 +248,18 @@ button {
         
     });
 
-    } else if (time >= 105 && time <= 118) {
+    } else if (time >= 54 && time <= 64) {
       BtnA.style.display = "inline-block";
       BtnB.style.display = "inline-block";
       BtnC.style.display = "inline-block";
       BtnD.style.display = "inline-block";
 
-
-      buttons.forEach((button) => {
-        button.addEventListener("click", () => {
-          btnA.style.backgroundColor = "green"; // Change background color of BtnA to green
-          const messageEl = document.getElementById("message");
-          messageEl.innerText = "laufen跑 verlaufen跑迷路了，sich verlaufen。ver前缀有变坏、加深含义";
-          setTimeout(() => {
-          messageEl.innerText = "";
-          }, 8000); 
-    }); 
-
-    });
-
-  } else if (time >= 145 && time <= 155) {
-      BtnA.style.display = "inline-block";
-      BtnB.style.display = "inline-block";
-      BtnC.style.display = "inline-block";
-      BtnD.style.display = "inline-block";
 
       buttons.forEach((button) => {
         button.addEventListener("click", () => {
           btnD.style.backgroundColor = "green"; // Change background color of BtnA to green
           const messageEl = document.getElementById("message");
-          messageEl.innerText = "bei mir = by me, bei加三格";
+          messageEl.innerText = "Я точу свой карандаш, чтобы он был острее. точно, exact";
           setTimeout(() => {
           messageEl.innerText = "";
           }, 8000); 
@@ -292,7 +267,25 @@ button {
 
     });
 
-  } else if (time >= 122 && time <= 177) {
+  } else if (time >= 89 && time <= 97) {
+      BtnA.style.display = "inline-block";
+      BtnB.style.display = "inline-block";
+      BtnC.style.display = "inline-block";
+      BtnD.style.display = "inline-block";
+
+      buttons.forEach((button) => {
+        button.addEventListener("click", () => {
+          btnC.style.backgroundColor = "green"; // Change background color of BtnA to green
+          const messageEl = document.getElementById("message");
+          messageEl.innerText = "у-=to add";
+          setTimeout(() => {
+          messageEl.innerText = "";
+          }, 8000); 
+    }); 
+
+    });
+
+  } else if (time >= 100 && time <= 110) {
       BtnA.style.display = "inline-block";
       BtnB.style.display = "inline-block";
       BtnC.style.display = "inline-block";
@@ -301,9 +294,9 @@ button {
 
       buttons.forEach((button) => {
         button.addEventListener("click", () => {
-          btnB.style.backgroundColor = "green"; // Change background color of BtnA to green
+          btnC.style.backgroundColor = "green"; // Change background color of BtnA to green
           const messageEl = document.getElementById("message");
-          messageEl.innerText = "这里的sie是代词，指代上一句阴性的Tuer（门）";
+          messageEl.innerText = "Ветер, На стене были видны тени от ветвей деревьев";
           setTimeout(() => {
           messageEl.innerText = "";
           }, 8000);
