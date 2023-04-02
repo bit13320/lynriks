@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>多曲目随机播放</title>
+  </head>
+  <body>
+    <h1>多曲目随机播放</h1>
+    <audio id="music" controls></audio>
+    <button onclick="randomize()">下一曲</button>
+    <script>
+      var songs = [
+        {
+          title: "歌曲1",
+          src: "детство.mp3"
+        },
+        {
+          title: "歌曲2",
+          src: "Запомни_I_love_you.mp3"
+        },
+        {
+          title: "歌曲3",
+          src: "Краш.mp3"
+        }
+      ];
+
+      var music = document.getElementById("music");
+      var currentIndex = -1;
+
+      function randomize() {
+        var newIndex = Math.floor(Math.random() * (songs.length - 1));
+        if (newIndex >= currentIndex) {
+          newIndex++;
+        }
+        currentIndex = newIndex;
+        music.src = songs[currentIndex].src;
+        music.type = "audio/mpeg";
+        music.play();
+      }
+
+      randomize();
+    </script>
+  </body>
+</html>
